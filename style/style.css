@@ -1,0 +1,118 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/*модальное окно*/
+.modal {
+  position: fixed; /*фиксация элемента таким образом, что он будет игнарировать прокрутку*/
+  left: 0;
+  top: 0;
+
+  z-index: 99998;
+
+  width: 100%;
+  height: 100vh; /*100% от высоты экрана*/
+
+  background-color: rgba(0, 0, 0, 0.3);
+
+  /*центрирование блока по центру*/
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: auto; /*если контент не будет помещаться внутри модального окна по оси Y, то его можно будет скролить*/
+
+  /*скрываем модальное окно*/
+  visibility: hidden;
+  opacity: 0;
+
+  /*анимация*/
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+/*Внутренний блок*/
+.modal__box {
+  max-width: 500px;
+
+  padding: 45px;
+  margin: 30px 15px;
+
+  position: relative;
+
+  z-index: 1;
+
+  background-color: white;
+
+  /*тень окна*/
+  box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.2);
+
+  /*уменьшение окна для анимации*/
+  transform: scale(0); /*окно вообще не видно*/
+
+  /*анимация*/
+  transition: transform 0.8s;
+}
+
+.modal__close-btn {
+  border: none; /*убираем абрис*/
+  background-color: transparent;
+
+  padding: 5px;
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  cursor: pointer;
+}
+
+/*анимация svg иконки Х*/
+.modal__close-btn svg path {
+  transition: fill 0.4s;
+}
+
+/*цвет кнопки при наведении*/
+.modal__close-btn:hover svg path {
+  fill: blue;
+}
+
+/*цвет кнопки при нажатии*/
+.modal__close-btn:active svg path {
+  fill: rgb(43, 255, 0);
+}
+/*класс .open у элемента с классом .modal*/
+.modal.open {
+  /*отображаем модальное окно*/
+  visibility: visible;
+  opacity: 1;
+}
+
+/*Если у класса .modal появится класс .open, то параметры указанные в теле применятся к классу .modal__box*/
+.modal.open .modal__box {
+  transform: scale(1);
+}
