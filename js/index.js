@@ -4,16 +4,16 @@ document
   .getElementById("open-modal-btn")
   .addEventListener("click", function () {
     /*находим модальное окно по id*/ /* добавляем класс open чтобы отобразить модальное окно */ document
-      .getElementById("my-moddal")
+      .getElementById("my-modal")
       .classList.add("open");
   });
 
 /*Скрытие модального окна. При клике на кнопку Х удаляется класс open*/
 document
-  .getElementById("close-my-moddal-btn")
+  .getElementById("close-my-modal-btn")
   .addEventListener("click", function () {
     /*находим модальное окно по id*/ /* добавляем класс open чтобы отобразить модальное окно */ document
-      .getElementById("my-moddal")
+      .getElementById("my-modal")
       .classList.remove("open");
   });
 
